@@ -13,6 +13,32 @@
     <title>Azizur Rahman | Frontend Developer Portfolio</title>
 
     <style>
+        :root{
+            --primary-background-color: rgba(180, 202, 247, 0);
+            --primary-font-color: blue;
+        }
+        .main-sections {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: var(--primary-background-color);
+        }
+        nav {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+        nav a:hover {
+            color: var(--primary-font-color);
+            transition: 0.3s ease;
+        }
+        @media (max-width: 768) {
+            .main-sections{
+                grid-template-columns: auto; /* Not Work: 3 columns on desktop → 1 column on mobile. */
+            }
+            nav {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 
@@ -29,32 +55,34 @@
         </nav>
     </header>
 
-    <section id="about" aria-labelledby="about-heading">
-        <h1 id="about-heading">About me</h1>
-        <p>I am azizur rahaman - a full stack developer</p>
-    </section>
-    <section id="projects" aria-labelledby="projects-heading">
-        <h1>Projects</h1>
-        <article>
-            <h3>Zabihaty</h3>
-            <p>Zabihaty is an online meat and grocery shopping platform</p>
-        </article>
-        <article>
-            <h3>ShareMeal</h3>
-            <p>ShareMeal is an online meal donation platform</p>
-        </article>
-    </section>
+    <div class="main-sections">
+        <section id="about" aria-labelledby="about-heading">
+            <h1 id="about-heading">About me</h1>
+            <p>I am azizur rahaman - a full stack developer</p>
+        </section>
+        <section id="projects" aria-labelledby="projects-heading">
+            <h1>Projects</h1>
+            <article>
+                <h3>Zabihaty</h3>
+                <p>Zabihaty is an online meat and grocery shopping platform</p>
+            </article>
+            <article>
+                <h3>ShareMeal</h3>
+                <p>ShareMeal is an online meal donation platform</p>
+            </article>
+        </section>
 
-    <section>
-        <h1>Contact</h1>
-        <ul>
-            <li>Name: Azizur Rahaman</li>
-            <li>Email: frazizur.rahaman@gmail.com</li>
-            <textarea name="textarea" rows="5" cols="50">Please give your feedback!</textarea>
-            <input type="submit" value="Submit" />
-        </ul>
-    </section>
+        <section>
+            <h1>Contact</h1>
+            <ul>
+                <li>Name: Azizur Rahaman</li>
+                <li>Email: frazizur.rahaman@gmail.com</li>
+                <textarea name="textarea" rows="5" cols="50">Please give your feedback!</textarea>
+                <input type="submit" value="Submit" />
+            </ul>
+        </section>
 
+    </div>
 </body>
 
 <footer>
