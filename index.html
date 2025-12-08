@@ -13,30 +13,68 @@
     <title>Azizur Rahman | Frontend Developer Portfolio</title>
 
     <style>
-        :root{
-            --primary-background-color: rgba(180, 202, 247, 0);
-            --primary-font-color: blue;
+        :root {
+            --primary: #007bff;
+            --bg: #f9f9f9;
+            --text: #333;
+            --font-base: 16px;
         }
-        .main-sections {
-            display: grid;
-            grid-template-columns: auto auto auto;
-            background-color: var(--primary-background-color);
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--font-base);
+            background: var(--bg);
+            color: var(--text);
         }
-        nav {
+
+        header {
             display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
         }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
         nav a:hover {
-            color: var(--primary-font-color);
-            transition: 0.3s ease;
+            color: var(--primary);
         }
-        @media (max-width: 768) {
-            .main-sections{
-                grid-template-columns: auto; /* Not Work: 3 columns on desktop → 1 column on mobile. */
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            border-radius:  10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            animation: fadeIn 0.6s ease forwards;
+        }
+        @keyframes fadeIn {
+            from{opacity: 0; transform: translateY(15px)}
+            to{opacity: 1; transform: translateY(0)}
+        }
+        @media (max-width: 768){
+            main{
+                grid-template-columns: 1fr;
+                padding: 1rem;
             }
-            nav {
-                flex-direction: column;
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
             }
         }
     </style>
@@ -55,7 +93,7 @@
         </nav>
     </header>
 
-    <div class="main-sections">
+    <main>
         <section id="about" aria-labelledby="about-heading">
             <h1 id="about-heading">About me</h1>
             <p>I am azizur rahaman - a full stack developer</p>
