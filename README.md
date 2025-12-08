@@ -1,65 +1,143 @@
-# 🧩 Problem Statement
+# 🧩 Phase 1: Modern Web Foundations (HTML + CSS + ES6)
 
-Design and build a clean, semantic, and accessible landing page for a personal portfolio using pure **HTML5**.
+## ✅ Step 1 – HTML5 (Days 1 – 2)
 
----
+### Learn:
+- Semantic elements: `<header>`, `<main>`, `<section>`, `<footer>`
+- Forms, inputs, labels, accessibility (`aria-*`)
+- Media: `<video>`, `<audio>`, `<picture>`
+- Meta tags, SEO basics, favicons
 
-## 🧠 Requirements
-
-You’re building the page for yourself — **Azizur Rahman**, an aspiring frontend developer preparing for an **OpenAI frontend role**.
-
-Your goal is to:
-
-- Use only HTML5 (no CSS yet)
-- Ensure the document is **well-structured**, **semantic**, and **accessible**
-- Include **meta information** for SEO
-- Organize content into **logical sections**
+### Practice:
+✅ Build a simple landing page for a portfolio using only HTML5.
 
 ---
 
-## ✅ Functional Requirements
+## ✅ Step 2 – CSS3 + Layout (Days 3 – 5)
 
-### 🧱 Header section
-- Must include your **name or logo**
-- Must have a navigation bar with internal links:
-  - “About”
-  - “Projects”
-  - “Contact”
+### Learn:
+- Box model, positioning, z-index
+- Flexbox, Grid layouts
+- Pseudo-classes (`:hover`, `:focus`)
+- Transitions & animations
+- Responsive design (media queries)
 
-### 🧠 Main section
-#### About section
-- Short intro about you
+### Practice:
+✅ Rebuild that same HTML portfolio page with:
+- Responsive grid layout
+- Hover animations on links
+- CSS variables for colors and font sizes
 
-#### Projects section
-- At least **2 project summaries** (use `<article>`)
-
-#### Contact section
-- A simple form with fields:
-  - **Name** (text)
-  - **Email** (email)
-  - **Message** (textarea)
-  - **Submit button**
-
-### 🦶 Footer section
-- Add **copyright**
-- Add at least one **external social link** (GitHub, LinkedIn)
+**🧠 Goal:** You should be able to look at a simple design and code it with pure CSS.
 
 ---
 
-## ♿ Accessibility
+## ✅ Step 3 – ES6+ JavaScript (Days 6 – 9)
 
-- Use semantic tags: `<header>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<nav>`
-- Each form field must have a `<label>`
-- Add **alt** for all images
+### Learn core concepts:
+- `let`, `const`, arrow functions
+- Template literals, destructuring
+- Spread/rest operators
+- Promises, `async`/`await`
+- Modules (`import` / `export`)
+- Array & object methods (`map`, `filter`, `reduce`)
+- Event loop and microtasks
+
+### Practice:
+- Build a Todo app in plain JS (no frameworks).
+- Add, delete, filter tasks.
+- Persist in `localStorage`.
 
 ---
 
-## 🧾 Metadata
+# ⚛️ Phase 2: React Core (Days 10 – 20)
 
-Include:
+## ✅ Step 4 – React Fundamentals
 
-```html
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Portfolio of Azizur Rahman — aspiring frontend developer." />
-<link rel="icon" href="favicon.ico" />
+### Learn:
+- JSX & Virtual DOM
+- Functional Components
+- Props & State
+- Conditional Rendering (`&&`, ternary)
+- Rendering Lists (`.map`)
+- Handling Events (`onClick`, `onChange`)
+- Controlled Forms (`value`, `onChange`)
+
+### 🧠 Concepts to master:
+- Unidirectional data flow
+- Component hierarchy
+
+### Practice:
+- Build a Counter App (state updates)
+- Build a Movie Search App using OMDb API
+
+---
+
+## ✅ Step 5 – React Hooks
+
+### Learn:
+- `useState`, `useEffect`, `useRef`, `useMemo`, `useCallback`
+- Cleanup functions in `useEffect`
+- Custom hooks
+
+### Practice:
+- Build a Weather App using `fetch` + `useEffect`
+- Build a Dark/Light Mode Toggler using custom hook
+
+---
+
+# 🧱 Phase 3: TypeScript with React (Days 21 – 27)
+
+## ✅ Step 6 – TypeScript Basics
+
+### Learn:
+- Types, Interfaces, Enums
+- Union & Intersection Types
+- Generics
+- Utility Types (`Partial`, `Pick`, `Omit`)
+- Type Inference & Narrowing
+
+### Practice:
+- Rewrite your Counter and Movie Search apps in TypeScript.
+- Create interfaces for props and state.
+- Add strict typing for API responses.
+
+---
+
+## ✅ Step 7 – Advanced React + TS
+
+### Learn:
+- Props typing (`React.FC<Props>`)
+- `useState<Type>` and `useReducer`
+- Component composition & children props
+- Error Boundary concepts
+- Context API with TypeScript
+
+### Practice:
+- Build a Context-based Theme Switcher
+- Create a Reusable Button and Input Component library
+
+---
+
+# 🚀 Phase 4: Projects & Delivery (Days 28 – 30)
+
+## ✅ Step 8 – Mini Projects (Deploy)
+
+Build 2–3 of these and deploy on Vercel:
+- Todo App (React + TS + localStorage)
+- Weather App (API integration)
+- Movie Search App (OMDb API + Search Input + Pagination)
+
+### Deliverables:
+- ✅ Deploy each to Vercel
+- ✅ Push code to GitHub
+- ✅ Write 1 README with screenshots & demo link
+
+---
+
+# 📚 Recommended Resources
+
+- 📘 **The Road to React** – Robin Wieruch
+- 📙 **TypeScript Handbook** – Microsoft Docs
+- 🎓 **freeCodeCamp HTML/CSS/JS Tracks**
+- 🎥 **React + TypeScript Crash Course** – Traversy Media
