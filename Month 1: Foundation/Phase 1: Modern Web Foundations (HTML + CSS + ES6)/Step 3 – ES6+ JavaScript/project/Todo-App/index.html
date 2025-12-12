@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="A Todo Application"/>
+        <title>Todo App</title>
+        <link rel="stylesheet" href="./style.css">
+
+    </head>
+    <body>
+        <nav>
+            <a href="/"><img class="brand-logo" src="https://cdn-icons-png.freepik.com/256/10074/10074287.png" alt="Todo App Logo"></a>
+            <ul>
+                <li>About</li>
+                <li>Terms of services</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+
+        <section class="todo-section">
+            <div class="todo-title-and-add-button">
+                <h2>Todos</h2>
+                <button id="createTodo">Create Todo</button>
+            </div>
+            <div id="taskAddSection">
+                <input id="taskInput" type="text" placeholder="Add new task">
+                <button id="addBtn">Add</button>
+            </div class="taskList">
+
+            <ul id="taskList"></ul>
+        </section>
+        <script src="app.js"></script>
+    </body>
+</html>
