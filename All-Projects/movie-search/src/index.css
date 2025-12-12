@@ -1,0 +1,185 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.search-bar-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  padding: 14px 24px;
+  width: 50%;
+  max-width: 600px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.95);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar:focus {
+  border-color: #fff;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-bar::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.search-button {
+  padding: 14px 32px;
+  margin-left: 12px;
+  background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-button:hover {
+  background: linear-gradient(135deg, #0066cc 0%, #004999 100%);
+  box-shadow: 0 6px 16px rgba(30, 144, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.search-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
+}
+
+
+.movieList {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.movieListTable {
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tableHeader {
+  background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
+  color: white;
+}
+
+.tableHeader th {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tableRow {
+  border-bottom: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.tableRow:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.01);
+  box-shadow: 0 2px 4px rgba(30, 144, 255, 0.1);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow td {
+  padding: 16px 20px;
+  vertical-align: middle;
+}
+
+.movieNumber {
+  font-weight: 600;
+  color: #666;
+  width: 60px;
+}
+
+.moviePoster {
+  width: 100px;
+}
+
+.moviePoster img {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.moviePoster img:hover {
+  transform: scale(1.05);
+}
+
+.movieTitle {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.movieType {
+  color: #666;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+
+.movieYear {
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .movieListTable {
+    font-size: 12px;
+  }
+  
+  .tableHeader th,
+  .tableRow td {
+    padding: 12px 10px;
+  }
+  
+  .moviePoster img {
+    width: 60px;
+    height: 90px;
+  }
+}
