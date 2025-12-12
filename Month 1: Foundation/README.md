@@ -88,6 +88,7 @@ Rebuild that same HTML portfolio page with:
 
 **Practice:**
 - Build a **Weather App** using `fetch` + `useEffect`
+  - 🔗 [Live Demo](https://frontend-mastery-sigma.vercel.app/)
 - Build a **Dark/Light Mode Toggler** using custom hook
 
 ---
