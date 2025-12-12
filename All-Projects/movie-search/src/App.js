@@ -6,11 +6,17 @@ import { useState } from 'react';
 
 function App() {
     const [movies, setMovies] = useState([]);
+    const API_KEY = process.env.REACT_APP_OMDB_API_KEY || '4baadb78';
+    
     async function fetchMovieList(query) {
-        const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=4baadb78&s=${query}`);
-        const data = await res.json();
-        setMovies(data.Search || [])
-        console.log(movies);
+        try {
+            const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`);
+            const data = await res.json();
+            setMovies(data.Search || [])
+            console.log(movies);
+        } catch (error) {
+            console.error('Error fetching movies:', error);
+        }
     }
 
   return (
