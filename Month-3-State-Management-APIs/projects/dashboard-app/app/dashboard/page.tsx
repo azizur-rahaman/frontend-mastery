@@ -9,7 +9,7 @@ export default function DashboardPage() {
     return (
         <ProtectedRoute>
             <main style={{ padding: 24 }}>
-                <NavBar />
+            <NavBar />
             <h1>Dashboard</h1>
             <UserForm />
             <UserTable />

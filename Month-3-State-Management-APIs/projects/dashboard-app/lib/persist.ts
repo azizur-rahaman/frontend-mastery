@@ -19,3 +19,15 @@ export const loadAuth = () : AuthState | null => {
 export const clearAuth = () => {
     localStorage.removeItem(KEY);
 }
+
+
+// Theme
+const THEMEKEY = 'theme';
+
+export const saveTheme = (mode: string) => {
+    localStorage.setItem(THEMEKEY, mode);
+}
+
+export const loadTheme = () : string | null => {
+    return localStorage.getItem(THEMEKEY);
+}

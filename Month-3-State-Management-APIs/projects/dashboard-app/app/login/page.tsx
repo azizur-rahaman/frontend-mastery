@@ -19,16 +19,23 @@ export default function LoginPage() {
     };
 
     return(
-        <main style={{ padding: 24 }}>
-            <h1>Login</h1>
-            <form onSubmit={submit}>
+        <main className="p-6 max-w-md mx-auto mt-10">
+            <h1 className="text-2xl font-bold mb-4">Login</h1>
+            <form onSubmit={submit} className="space-y-4">
                 <input 
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
 
-                <button type="submit" style={{marginLeft:8}}>Login</button>
+                <button 
+                    type="submit" 
+                    className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={!username}
+                >
+                    Login
+                </button>
             </form>
         </main>
     )
