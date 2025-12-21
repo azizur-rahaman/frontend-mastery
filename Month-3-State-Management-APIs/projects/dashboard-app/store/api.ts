@@ -18,7 +18,31 @@ export const api = createApi({
                 url: '/users',
                 method: 'POST',
                 body: user,
-            })
+            }),
+
+            async onQueryStarted(user, {dispatch, queryFulfilled}) {
+                const tempId = Date.now();
+
+                const patchResult = dispatch(
+                    api.util.updateQueryData('getUsers', undefined, (draft) => {
+                        draft.push({id: tempId, ...user} as User);
+                    })
+                );
+
+                try{
+                    const {data: created} = await queryFulfilled;
+
+                    dispatch(
+                        api.util.updateQueryData('getUsers', undefined, (draft) => {
+                            const index = draft.findIndex((u) => u.id === tempId);
+                            if(index !== -1) draft[index] = created;
+                        })
+                    );
+                } catch {
+                    patchResult.undo();
+                }
+            }
+
         }),
         updateUser: builder.mutation<User, User>({
             query: (user) => ({
@@ -33,6 +57,23 @@ export const api = createApi({
                 url: `/users/${id}`,
                 method: 'DELETE',
             }),
+
+            async onQueryStarted(id, {dispatch, queryFulfilled}){
+                //1. Optimistically update cache
+                const patchResult = dispatch(
+                    api.util.updateQueryData('getUsers', undefined, (draft) => {
+                        return draft.filter((user) => user.id != id);
+                    })
+                )
+
+                try{
+                    //2. Wait for server response
+                    await queryFulfilled;
+                }catch {
+                    //3. Rollback if failed
+                    patchResult.undo();
+                }
+            },
             invalidatesTags: ['Users']
         })
     })

@@ -2,7 +2,14 @@ import { User } from "@/lib/types/user";
 import { useDeleteUserMutation, useGetUsersQuery, useUpdateUserMutation } from "@/store/api";
 
 export default function UserTable() {
-    const {data, isLoading, isError, error, refetch} = useGetUsersQuery();
+    const {data, isLoading, isError, error, refetch} = useGetUsersQuery(undefined, {
+        pollingInterval: 15000, // polling in every 15 seconds
+    });
+
+    // const {data, isLoading, isError, error, refetch} = useGetUsersQuery(undefined, {
+    //     skip: !isLoggedIn, //skip polling
+    // });
+
     const [updateUser, {isLoading: isUpdating}] = useUpdateUserMutation();
     const [deleteUser, {isLoading: isDeleting}] = useDeleteUserMutation();
     if(isLoading){
