@@ -1,18 +1,14 @@
-import { deleteAuth, loadAuth } from "@/lib/persist";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
-interface AuthState {
+export interface AuthState {
     user: string | null;
     token: string | null;
-    isAuthenticated: boolean,
 }
 
 const initialState: AuthState = {
     user: null,
     token: null,
-    isAuthenticated: false,
-    ...loadAuth(), // hydrate from localStorage
 }
 
 const authSlice = createSlice({
@@ -22,16 +18,16 @@ const authSlice = createSlice({
         login: (state, action: PayloadAction<{ user: string; token: string }> ) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
-            state.isAuthenticated = true;
         },
         logout:(state) => {
             state.user = null;
             state.token = null;
-            state.isAuthenticated = false;
-            deleteAuth();
+        },
+        hydrate: (_state, action: PayloadAction<AuthState>) => {
+            return action.payload;
         }
     }
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, hydrate } = authSlice.actions;
 export default authSlice.reducer;
