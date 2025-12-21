@@ -1,8 +1,5 @@
+import { User } from '@/lib/types/user';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-interface User {
-    id: number;
-}
 
 
 export const api = createApi({
