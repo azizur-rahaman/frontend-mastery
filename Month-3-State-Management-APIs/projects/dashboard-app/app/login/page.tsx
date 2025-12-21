@@ -16,6 +16,7 @@ export default function LoginPage() {
 
         // fake auth
         dispatch(login({user: username, token: 'fake-jwt-token'}));
+        router.push('/dashboard');
     };
 
     return(
