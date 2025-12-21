@@ -7,7 +7,11 @@ jest.mock('next/navigation', () => require('@/__mocks__/next-navigation'));
 
 describe('Add User Mutation', () => {
   it('adds a new user and updates the UI', async () => {
-    renderWithProviders(<DashboardPage />);
+    renderWithProviders(<DashboardPage />, {
+      preloadedState: {
+        auth: { user: 'testuser', token: 'testtoken' },
+      },
+    });
 
     // Wait for initial user
     expect(await screen.findByText('John Doe')).toBeInTheDocument();

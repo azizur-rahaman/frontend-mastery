@@ -7,7 +7,11 @@ jest.mock('next/navigation', () => require('@/__mocks__/next-navigation'));
 
 describe('Delete User (Optimistic)', () => {
   it('removes user immediately from UI', async () => {
-    renderWithProviders(<DashboardPage />);
+    renderWithProviders(<DashboardPage />, {
+      preloadedState: {
+        auth: { user: 'testuser', token: 'testtoken' },
+      },
+    });
 
     const userRow = await screen.findByText('John Doe');
     expect(userRow).toBeInTheDocument();
