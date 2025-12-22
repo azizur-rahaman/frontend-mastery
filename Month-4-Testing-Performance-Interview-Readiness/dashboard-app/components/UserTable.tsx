@@ -1,8 +1,10 @@
 import { User } from "@/lib/types/user";
 import { useDeleteUserMutation, useGetUsersQuery, useUpdateUserMutation } from "@/store/api";
+import { memo, useCallback, useMemo } from "react";
+import UserRow from "./UserRow";
 
-export default function UserTable() {
-    const {data, isLoading, isError, error, refetch} = useGetUsersQuery(undefined, {
+function UserTable() {
+    const { data, isLoading, isError, error, refetch } = useGetUsersQuery(undefined, {
         pollingInterval: 15000, // polling in every 15 seconds
     });
 
@@ -10,20 +12,25 @@ export default function UserTable() {
     //     skip: !isLoggedIn, //skip polling
     // });
 
-    const [updateUser, {isLoading: isUpdating}] = useUpdateUserMutation();
-    const [deleteUser, {isLoading: isDeleting}] = useDeleteUserMutation();
-    if(isLoading){
+    const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
+    const [deleteUser, { isLoading: isDeleting }] = useDeleteUserMutation();
+
+    const onDelete = useCallback((id: number) => {
+        deleteUser(id);
+    }, [deleteUser])
+
+    if (isLoading) {
         return <p>Loading users...</p>
     };
 
-    if(isUpdating){
+    if (isUpdating) {
         return <p>User Updating...</p>;
     }
 
-    if(isDeleting) {return <p>Deleting user..</p>;}
+    if (isDeleting) { return <p>Deleting user..</p>; }
 
-    if(isError){
-        return(
+    if (isError) {
+        return (
             <div>
                 <p>Error loading users</p>
                 <button onClick={() => refetch()}>Retry</button>
@@ -31,7 +38,7 @@ export default function UserTable() {
         );
     };
 
-    if(!data || data.length === 0){
+    if (!data || data.length === 0) {
         return <p>No users found!</p>
     };
 
@@ -42,12 +49,22 @@ export default function UserTable() {
         })
     }
 
+
+    const rows = useMemo(() => data.map((user) => (
+        <UserRow
+            key={user.id}
+            user={user}
+            onEdit={editUser}
+            onDelete={onDelete}
+        />
+    )), [data, editUser, onDelete]);
+
     return (
         <div>
             <h2>Users</h2>
-            <button onClick={() => refetch()} style={{ marginBottom: 12}}>Refresh</button>
+            <button onClick={() => refetch()} style={{ marginBottom: 12 }}>Refresh</button>
 
-{/*      <table border={1} cellPadding={8} cellSpacing={0} width="100%">
+            {/*      <table border={1} cellPadding={8} cellSpacing={0} width="100%">
 */}
             <table border={1} cellPadding={8} cellSpacing={0} width="100%">
                 <thead>
@@ -59,29 +76,11 @@ export default function UserTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((user) => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.username}</td>
-                            <td>{user.email}</td>
-                            <td>
-                                <button
-                                onClick={() => editUser(user)}
-                                >Edit
-                                </button>
-                                
-                                <button
-                                    onClick={()=> deleteUser(user.id)}
-                                    style={{marginLeft: 8}}
-                                    >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
+                    {rows}
                 </tbody>
             </table>
         </div>
     )
 }
+
+export default memo(UserTable);
