@@ -1,4 +1,4 @@
-import { rest } from 'msw';
+import { http, HttpResponse } from 'msw';
 
 type User = {
   id: number;
@@ -13,21 +13,21 @@ let users: User[] = [
 
 export const handlers = [
   // GET users
-  rest.get('https://jsonplaceholder.typicode.com/users', (req, res, ctx) => {
-    return res(ctx.json(users));
+  http.get('https://jsonplaceholder.typicode.com/users', () => {
+    return HttpResponse.json(users);
   }),
 
   // POST add user
-  rest.post('https://jsonplaceholder.typicode.com/users', async (req, res, ctx) => {
-    const body = await req.json() as Record<string, unknown>;
+  http.post('https://jsonplaceholder.typicode.com/users', async ({ request }) => {
+    const body = await request.json() as Record<string, unknown>;
     const newUser = { id: Date.now(), ...body } as User;
     users.push(newUser);
-    return res(ctx.status(201), ctx.json(newUser));
+    return HttpResponse.json(newUser, { status: 201 });
   }),
 
   // DELETE user
-  rest.delete('https://jsonplaceholder.typicode.com/users/:id', (req, res, ctx) => {
-    users = users.filter((u) => u.id !== Number(req.params.id));
-    return res(ctx.status(200), ctx.json({}));
+  http.delete('https://jsonplaceholder.typicode.com/users/:id', ({ params }) => {
+    users = users.filter((u) => u.id !== Number(params.id));
+    return HttpResponse.json({}, { status: 200 });
   }),
 ];

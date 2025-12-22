@@ -6,8 +6,9 @@ import { logout } from '@/store/slices/authSlice';
 import { clearAuth } from '@/lib/persist';
 import type { RootState, AppDispatch } from '@/store/store';
 import { useRouter } from 'next/navigation';
+import { memo } from 'react';
 
-export default function Navbar() {
+function Navbar() {
   const dispatch = useDispatch<AppDispatch>();
   const mode = useSelector((state: RootState) => state.theme.mode);
   const router = useRouter();
@@ -30,3 +31,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export default memo(Navbar);
